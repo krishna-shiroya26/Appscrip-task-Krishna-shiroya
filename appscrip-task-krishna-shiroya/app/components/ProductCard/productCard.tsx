@@ -11,11 +11,11 @@ import {
 } from "./styles";
 import ProductImage from '../../assets/images/bag.png';
 
-const ProductCard = () => {
+const ProductCard = ({ isTag = false }: { isTag?: boolean }) => {
   return (
     <ProductCardContainer>
       <ImageWrapper>
-        <Tag>NEW PRODUCT</Tag>
+        {isTag && <Tag>NEW PRODUCT</Tag>}
         <Image
           src={ProductImage} // replace with your image path
           alt="Product"

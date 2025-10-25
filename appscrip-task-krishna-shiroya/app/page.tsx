@@ -11,7 +11,7 @@ export default function Home() {
       <AnnouncementBar />
       <Navbar />
       <HeroSection />
-      <ProductCard />
+      <ProductCard isTag={true} />
       <Footer />
     </>
   );

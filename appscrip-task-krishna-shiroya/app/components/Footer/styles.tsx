@@ -199,27 +199,28 @@ export const MiddleSection = styled.div`
   }
 `;
 
-export const CollapsibleSection = styled.div`
+export const FooterSection = styled.div`
   flex: 1;
+  
+  @media (max-width: 767px) {
+    border-bottom: 1px solid #374151;
+    padding-bottom: 16px;
+  }
 `;
 
-export const CollapsibleHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
+export const SectionHeader = styled.div`
   padding: 12px 0;
   border-bottom: 1px solid #374151;
+  margin-bottom: 16px;
+  
+  @media (max-width: 767px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
 `;
 
-export const CollapsibleTitle = styled.h4`
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-`;
 
 export const ChevronIcon = styled.div`
   width: 16px;
@@ -228,18 +229,24 @@ export const ChevronIcon = styled.div`
   border-bottom: 2px solid #fff;
   transform: rotate(45deg);
   transition: transform 0.2s;
+  display: none;
+  
+  @media (max-width: 767px) {
+    display: block;
+  }
   
   &.expanded {
     transform: rotate(225deg);
   }
 `;
 
-export const CollapsibleContent = styled.div`
-  padding: 16px 0;
-  display: none;
-  
-  &.expanded {
-    display: block;
+export const SectionContent = styled.div`
+  @media (max-width: 767px) {
+    display: none;
+    
+    &.expanded {
+      display: block;
+    }
   }
 `;
 
@@ -291,8 +298,25 @@ export const SocialIcon = styled.a`
   }
 `;
 
-export const PaymentSection = styled.div`
+export const BottomSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin-bottom: 32px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+`;
+
+export const PaymentSection = styled.div`
+  flex: 1;
+  
+  @media (min-width: 768px) {
+    max-width: 60%;
+  }
 `;
 
 export const PaymentTitle = styled.h4`
@@ -325,9 +349,15 @@ export const PaymentMethod = styled.div`
 `;
 
 export const CopyrightSection = styled.div`
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #374151;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+  @media (max-width: 767px) {
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 export const CopyrightText = styled.p`

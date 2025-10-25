@@ -22,16 +22,16 @@ import {
   CurrencyNote,
   Separator,
   MiddleSection,
-  CollapsibleSection,
-  CollapsibleHeader,
-  CollapsibleTitle,
+  FooterSection,
+  SectionHeader,
   ChevronIcon,
-  CollapsibleContent,
+  SectionContent,
   LinkList,
   LinkItem,
   FooterLink,
   SocialIcons,
   SocialIcon,
+  BottomSection,
   PaymentSection,
   PaymentTitle,
   PaymentMethods,
@@ -141,12 +141,12 @@ const Footer: React.FC = () => {
 
       {/* Middle Section */}
       <MiddleSection>
-        <CollapsibleSection>
-          <CollapsibleHeader onClick={() => toggleSection('brand')}>
-            <CollapsibleTitle>mettä muse</CollapsibleTitle>
+        <FooterSection>
+          <SectionHeader onClick={() => toggleSection('brand')}>
+            <SectionTitle>mettä muse</SectionTitle>
             <ChevronIcon className={expandedSections.brand ? 'expanded' : ''} />
-          </CollapsibleHeader>
-          <CollapsibleContent className={expandedSections.brand ? 'expanded' : ''}>
+          </SectionHeader>
+          <SectionContent className={expandedSections.brand ? 'expanded' : ''}>
             <LinkList>
               {brandLinks.map((link, index) => (
                 <LinkItem key={index}>
@@ -156,15 +156,15 @@ const Footer: React.FC = () => {
                 </LinkItem>
               ))}
             </LinkList>
-          </CollapsibleContent>
-        </CollapsibleSection>
+          </SectionContent>
+        </FooterSection>
 
-        <CollapsibleSection>
-          <CollapsibleHeader onClick={() => toggleSection('quick')}>
-            <CollapsibleTitle>QUICK LINKS</CollapsibleTitle>
+        <FooterSection>
+          <SectionHeader onClick={() => toggleSection('quick')}>
+            <SectionTitle>QUICK LINKS</SectionTitle>
             <ChevronIcon className={expandedSections.quick ? 'expanded' : ''} />
-          </CollapsibleHeader>
-          <CollapsibleContent className={expandedSections.quick ? 'expanded' : ''}>
+          </SectionHeader>
+          <SectionContent className={expandedSections.quick ? 'expanded' : ''}>
             <LinkList>
               {quickLinks.map((link, index) => (
                 <LinkItem key={index}>
@@ -174,15 +174,15 @@ const Footer: React.FC = () => {
                 </LinkItem>
               ))}
             </LinkList>
-          </CollapsibleContent>
-        </CollapsibleSection>
+          </SectionContent>
+        </FooterSection>
 
-        <CollapsibleSection>
-          <CollapsibleHeader onClick={() => toggleSection('social')}>
-            <CollapsibleTitle>FOLLOW US</CollapsibleTitle>
+        <FooterSection>
+          <SectionHeader onClick={() => toggleSection('social')}>
+            <SectionTitle>FOLLOW US</SectionTitle>
             <ChevronIcon className={expandedSections.social ? 'expanded' : ''} />
-          </CollapsibleHeader>
-          <CollapsibleContent className={expandedSections.social ? 'expanded' : ''}>
+          </SectionHeader>
+          <SectionContent className={expandedSections.social ? 'expanded' : ''}>
             <SocialIcons>
               <SocialIcon href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 📷
@@ -191,30 +191,29 @@ const Footer: React.FC = () => {
                 in
               </SocialIcon>
             </SocialIcons>
-          </CollapsibleContent>
-        </CollapsibleSection>
+          </SectionContent>
+        </FooterSection>
       </MiddleSection>
 
       <Separator />
 
-      {/* Payment Section */}
-      <PaymentSection>
-        <PaymentTitle>mettä muse ACCEPTS</PaymentTitle>
-        <PaymentMethods>
-          {paymentMethods.map((method, index) => (
-            <PaymentMethod key={index} style={{ backgroundColor: method.color, color: method.color === '#000' ? '#fff' : '#000' }}>
-              {method.name}
-            </PaymentMethod>
-          ))}
-        </PaymentMethods>
-      </PaymentSection>
+      {/* Bottom Section */}
+      <BottomSection>
+        <PaymentSection>
+          <PaymentTitle>mettä muse ACCEPTS</PaymentTitle>
+          <PaymentMethods>
+            {paymentMethods.map((method, index) => (
+              <PaymentMethod key={index} style={{ backgroundColor: method.color, color: method.color === '#000' ? '#fff' : '#000' }}>
+                {method.name}
+              </PaymentMethod>
+            ))}
+          </PaymentMethods>
+        </PaymentSection>
 
-      <Separator />
-
-      {/* Copyright Section */}
-      <CopyrightSection>
-        <CopyrightText>Copyright © 2023 mettamuse. All rights reserved.</CopyrightText>
-      </CopyrightSection>
+        <CopyrightSection>
+          <CopyrightText>Copyright © 2023 mettamuse. All rights reserved.</CopyrightText>
+        </CopyrightSection>
+      </BottomSection>
     </FooterContainer>
   );
 };
