@@ -21,6 +21,7 @@ export const TopSection = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 40px;
   }
 `;
