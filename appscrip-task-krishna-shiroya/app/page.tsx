@@ -1,9 +1,9 @@
 
 import AnnouncementBar from "./components/AnnouncementBar/announcementBar";
 import Navbar from "./components/Navbar/navbar";
-import ProductCard from "./components/ProductCard/productCard";
 import Footer from "./components/Footer/footer";
 import HeroSection from "./components/HeroSection/heroSection";
+import ProductListSection from "./components/ProductListSection/productListSection";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <AnnouncementBar />
       <Navbar />
       <HeroSection />
-      <ProductCard isTag={true} />
+      <ProductListSection />
       <Footer />
     </>
   );

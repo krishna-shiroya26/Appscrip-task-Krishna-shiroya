@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ProductCardContainer = styled.div`
-  width: 273px;
+  width: 100%;
   border: 1px solid #dcdcdc;
   border-radius: 8px;
   overflow: hidden;
@@ -72,6 +72,7 @@ export const SignInText = styled.p`
   cursor: pointer;
 display: flex;
 align-items: center;
+justify-content: space-between;
 gap: 4px;
   a {
     color: #6a0dad;
