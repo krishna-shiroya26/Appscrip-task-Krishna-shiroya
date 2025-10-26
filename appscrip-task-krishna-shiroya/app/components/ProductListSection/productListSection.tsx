@@ -9,35 +9,64 @@ import {
     FilterOverlay,
     PageHeader,
     PageTitle,
-    PageDescription
+    PageDescription,
+    TopBar,
+    ItemCount,
+    HideFilterLink,
+    SortContainer
 } from './styles';
 import ProductCard from '../ProductCard/productCard';
 import Filter from '../Filter/filter';
+import SortDropdown from '../SortDropdown/sortDropdown';
 
 
 const ProductListSection = () => {
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
     const [activeFilters, setActiveFilters] = useState<any>({});
+    const [isFilterHidden, setIsFilterHidden] = useState(false);
 
     const handleFilterChange = (filters: any) => {
         setActiveFilters(filters);
-        console.log('Active filters:', filters);
+    };
+
+    const handleSortChange = (sortValue: string) => {
+        console.log('Sort changed to:', sortValue);
+    };
+
+    const toggleFilterVisibility = () => {
+        setIsFilterHidden(!isFilterHidden);
     };
 
     return (
-        <ProductListWrapper>
-            <FilterSidebar>
-                <Filter onFilterChange={handleFilterChange} />
-            </FilterSidebar>
+        <ProductListWrapper $isFilterHidden={isFilterHidden}>
+            {!isFilterHidden && (
+                <FilterSidebar>
+                    <Filter onFilterChange={handleFilterChange} />
+                </FilterSidebar>
+            )}
             
-            <MainContent>
-             
+            <MainContent $isFilterHidden={isFilterHidden}>
+                <TopBar>
+                    <ItemCount>3425 ITEMS</ItemCount>
+                    <HideFilterLink 
+                        href="#" 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            toggleFilterVisibility();
+                        }}
+                    >
+                        {isFilterHidden ? '< SHOW FILTER' : '< HIDE FILTER'}
+                    </HideFilterLink>
+                    <SortContainer>
+                        <SortDropdown onSortChange={handleSortChange} />
+                    </SortContainer>
+                </TopBar>
 
                 <MobileFilterButton onClick={() => setIsMobileFilterOpen(true)}>
                     Show Filters
                 </MobileFilterButton>
                 
-                <ProductListSectionContainer>
+                <ProductListSectionContainer $isFilterHidden={isFilterHidden}>
                     <ProductCard isTag={true} />
                     <ProductCard />
                     <ProductCard />
