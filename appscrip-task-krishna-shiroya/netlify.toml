@@ -1,4 +1,4 @@
 [build]
   base = "appscrip-task-krishna-shiroya"          # folder where your package.json is
   command = "npm run build"      # build command
-  publish = "appscrip-task-krishna-shiroya/.next" # build output folder for Next.js
+  publish = ".next" # build output folder for Next.js
