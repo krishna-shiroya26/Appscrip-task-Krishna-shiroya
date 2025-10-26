@@ -13,8 +13,9 @@ export const ProductListWrapper = styled.div<{ $isFilterHidden: boolean }>`
   
   @media (max-width: 991px) {
     flex-direction: column;
-    padding: 20px 0;
+    padding: 20px 16px;
     gap: 0;
+    max-width: 100%;
   }
 `;
 
@@ -34,8 +35,9 @@ export const MainContent = styled.main<{ $isFilterHidden: boolean }>`
   width: 100%;
   
   @media (max-width: 991px) {
-    padding: 0 24px;
+    padding: 0;
     max-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -48,9 +50,11 @@ export const TopBar = styled.div`
   border-bottom: 1px solid #E5E7EB;
   
   @media (max-width: 991px) {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
   }
 `;
 
@@ -59,6 +63,10 @@ export const ItemCount = styled.span`
   font-weight: 600;
   color: #374151;
   letter-spacing: 0.5px;
+  
+  @media (max-width: 991px) {
+    font-size: 14px;
+  }
 `;
 
 export const HideFilterLink = styled.a`
@@ -71,6 +79,10 @@ export const HideFilterLink = styled.a`
   &:hover {
     color: #6B7280;
   }
+  
+  @media (max-width: 991px) {
+    display: none;
+  }
 `;
 
 export const SortContainer = styled.div`
@@ -82,7 +94,8 @@ export const PageHeader = styled.div`
   margin-bottom: 40px;
   
   @media (max-width: 991px) {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    text-align: center;
   }
 `;
 
@@ -96,6 +109,7 @@ export const PageTitle = styled.h1`
   
   @media (max-width: 991px) {
     font-size: 24px;
+    margin-bottom: 12px;
   }
 `;
 
@@ -107,6 +121,9 @@ export const PageDescription = styled.p`
   
   @media (max-width: 991px) {
     font-size: 14px;
+    line-height: 1.4;
+    max-width: 600px;
+    margin: 0 auto;
   }
 `;
 
@@ -126,7 +143,7 @@ export const MobileFilterButton = styled.button`
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     transition: background-color 0.2s;
     
     &:hover {
@@ -161,7 +178,14 @@ export const ProductListSectionContainer = styled.div<{ $isFilterHidden?: boolea
     grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 991px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
   }
 `;
