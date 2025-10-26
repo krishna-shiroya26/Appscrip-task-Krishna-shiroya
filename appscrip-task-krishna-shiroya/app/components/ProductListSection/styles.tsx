@@ -189,3 +189,63 @@ export const ProductListSectionContainer = styled.div<{ $isFilterHidden?: boolea
     gap: 16px;
   }
 `;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  
+  p {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #6b7280;
+  }
+`;
+
+export const LoadingSpinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f4f6;
+  border-top: 4px solid #374151;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+export const ErrorMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  
+  p {
+    font-size: 16px;
+    color: #ef4444;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    padding: 12px 24px;
+    background: #374151;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background: #1f2937;
+    }
+  }
+`;

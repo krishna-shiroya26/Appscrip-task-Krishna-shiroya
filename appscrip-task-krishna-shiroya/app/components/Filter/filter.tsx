@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FilterContainer,
   FilterHeader,
@@ -22,6 +22,7 @@ import {
   MobileFilterTitle,
   CloseButton
 } from './styles';
+import { fetchCategories } from '../../services/api';
 
 interface FilterOptionType {
   id: string;
@@ -49,78 +50,55 @@ const Filter: React.FC<FilterProps> = ({
   onClose, 
   onFilterChange 
 }) => {
-  const [filterSections, setFilterSections] = useState<FilterSectionType[]>([
-    {
-      id: 'customizable',
-      title: 'CUSTOMIZABLE',
-      subtitle: '',
-      options: [
-        { id: 'customizable-option', label: 'CUSTOMIZABLE', checked: false }
-      ],
-      isExpanded: false
-    },
-    {
-      id: 'ideal-for',
-      title: 'IDEAL FOR',
-      subtitle: 'All',
-      options: [
-        { id: 'men', label: 'Men', checked: false },
-        { id: 'women', label: 'Women', checked: false },
-        { id: 'baby-kids', label: 'Baby & Kids', checked: false }
-      ],
-      isExpanded: true,
-      hasUnselectAll: true
-    },
-    {
-      id: 'occasion',
-      title: 'OCCASION',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    },
-    {
-      id: 'work',
-      title: 'WORK',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    },
-    {
-      id: 'fabric',
-      title: 'FABRIC',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    },
-    {
-      id: 'segment',
-      title: 'SEGMENT',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    },
-    {
-      id: 'suitable-for',
-      title: 'SUITABLE FOR',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    },
-    {
-      id: 'raw-materials',
-      title: 'RAW MATERIALS',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    },
-    {
-      id: 'pattern',
-      title: 'PATTERN',
-      subtitle: 'All',
-      options: [],
-      isExpanded: false
-    }
-  ]);
+  const [filterSections, setFilterSections] = useState<FilterSectionType[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Load categories from API
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const categories = await fetchCategories();
+        const categoryOptions = categories.map(category => ({
+          id: category.toLowerCase(),
+          label: category.charAt(0).toUpperCase() + category.slice(1),
+          checked: false
+        }));
+
+        setFilterSections([
+          {
+            id: 'category',
+            title: 'CATEGORY',
+            subtitle: 'All',
+            options: categoryOptions,
+            isExpanded: true,
+            hasUnselectAll: true
+          }
+        ]);
+      } catch (error) {
+        console.error('Error loading categories:', error);
+        // Fallback to default categories
+        setFilterSections([
+          {
+            id: 'category',
+            title: 'CATEGORY',
+            subtitle: 'All',
+            options: [
+              { id: 'electronics', label: 'Electronics', checked: false },
+              { id: 'jewelery', label: 'Jewelery', checked: false },
+              { id: 'mens-clothing', label: 'Men\'s Clothing', checked: false },
+              { id: 'womens-clothing', label: 'Women\'s Clothing', checked: false }
+            ],
+            isExpanded: true,
+            hasUnselectAll: true
+          }
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCategories();
+  }, []);
 
   const toggleSection = (sectionId: string) => {
     setFilterSections(prev => 

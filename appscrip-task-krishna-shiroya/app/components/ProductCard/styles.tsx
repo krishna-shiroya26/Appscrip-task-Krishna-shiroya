@@ -80,12 +80,38 @@ gap: 4px;
   }
 `;
 
-export const Icon = styled.svg`
-  width: 24px;
-  height: 24px;
-  stroke: #374151;
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+export const Icon = styled.svg<{ $isActive?: boolean }>`
+  width: 20px;
+  height: 20px;
+  fill: ${props => props.$isActive ? '#ef4444' : '#9ca3af'};
+  cursor: pointer;
+  transition: fill 0.2s ease;
+
+  &:hover {
+    fill: #ef4444;
+  }
+`;
+
+export const Price = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+`;
+
+export const Rating = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+  
+  span {
+    font-size: 12px;
+    color: #6b7280;
+  }
+`;
+
+export const StarIcon = styled.span<{ $filled: boolean }>`
+  color: ${props => props.$filled ? '#fbbf24' : '#d1d5db'};
+  font-size: 14px;
 `;
