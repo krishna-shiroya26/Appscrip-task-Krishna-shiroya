@@ -10,8 +10,6 @@ import {
   LogoText,
   RightSection,
   IconButton,
-  LanguageSelector,
-  LanguageText,
   BottomRow,
   DesktopNav,
   MobileNav,

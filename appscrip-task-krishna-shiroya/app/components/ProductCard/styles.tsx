@@ -65,7 +65,7 @@ export const Title = styled.h3`
   text-overflow: ellipsis;
 `;
 
-export const SignInText = styled.p`
+export const SignInText = styled.div`
   font-size: 12px;
   color: #6a0dad;
   margin-bottom: 0;

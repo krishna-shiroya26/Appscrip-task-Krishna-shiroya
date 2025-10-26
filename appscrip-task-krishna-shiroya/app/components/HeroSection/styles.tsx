@@ -19,6 +19,7 @@ export const HeroSectionTitle = styled.h1`
   text-wrap: balance;
   color: #000;
   text-transform: uppercase;
+  text-align: center;
 `;
 export const HeroSectionDescription = styled.p`
   font-size: 18px;
