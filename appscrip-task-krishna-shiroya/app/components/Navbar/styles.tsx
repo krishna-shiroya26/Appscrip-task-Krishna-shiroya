@@ -19,6 +19,10 @@ export const TopRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 `;
 
 export const LogoSection = styled.div`
